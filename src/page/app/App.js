@@ -24,6 +24,10 @@ export default function App() {
     dispatch(contactsOperations.fetchContacts());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+
   const addNewContact = (name, number) => {
     if (
       contacts.find(
