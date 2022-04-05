@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import shortid from "shortid";
 import ContactForm from "../../components/contactForm/ContactForm";
 import Filter from "../../components/filter/Filter";
 import Contacts from "../../components/contacts/Contacts";
@@ -45,23 +44,12 @@ export default function App() {
     dispatch(changeFilter(evt.currentTarget.value));
   };
 
-  // const getVisibleContacts = () => {
-  //   const normalizedFilter = filter.toLowerCase();
-  //   return contacts.filter((filter) =>
-  //     filter.name.toLowerCase().includes(normalizedFilter)
-  //   );
-  // };
-  // useEffect(() => {
-  //   const contact = localStorage.getItem(`contacts`);
-  //   const parsedContact = JSON.parse(contact);
-  //   if (parsedContact) {
-  //     // setContacts(parsedContact);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem(`contacts`, JSON.stringify(contacts));
-  // }, [contacts]);
+  const getVisibleContacts = () => {
+    const normalizedFilter = filter.toLowerCase();
+    return contacts.filter((filter) =>
+      filter.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
 
   return (
     <>
@@ -75,7 +63,10 @@ export default function App() {
           <h2>Contacts</h2>
           <Filter value={filter} change={searchMethod} />
           {contacts.length > 0 ? (
-            <Contacts filteredContacts={contacts} deleteElem={deleting} />
+            <Contacts
+              filteredContacts={getVisibleContacts()}
+              deleteElem={deleting}
+            />
           ) : (
             <h2>Your Phonebook is empty!</h2>
           )}
