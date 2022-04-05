@@ -22,10 +22,32 @@ const fetchContacts = () => async (dispatch) => {
   }
 };
 
+const addContacts = (description) => (dispatch) => {
+  const contact = {
+    ...description,
+    completed: false,
+  };
+  dispatch(addContactsRequest());
+
+  axios
+    .post(`/contacts`, contact)
+    .then(({ data }) => dispatch(addContactsSuccess(data)))
+    .catch((error) => dispatch(addContactsError(error.message)));
+};
+
+const deleteContacts = (contactId) => (dispatch) => {
+  dispatch(deleteContactsRequest());
+
+  axios
+    .delete(`/contacts/${contactId}`)
+    .then(() => dispatch(deleteContactsSuccess(contactId)))
+    .catch((error) => dispatch(deleteContactsError(error.message)));
+};
+
 const contactsOperations = {
   fetchContacts,
-  // addContacts,
-  // deleteContacts,
+  addContacts,
+  deleteContacts,
 };
 
 export default contactsOperations;
