@@ -23,8 +23,10 @@ export default function App() {
     }
     dispatch(contactsOperations.fetchContacts());
   }, [dispatch]);
-
   useEffect(() => {
+    if (!logedIn) {
+      return;
+    }
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 

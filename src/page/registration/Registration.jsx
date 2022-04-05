@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authOperations } from "../../redux/auth";
+import styled from "./Registration.module.css";
+import nature from "../../images/nature.jpg";
 
 export default function Registration() {
   const dispatch = useDispatch();
@@ -30,34 +32,78 @@ export default function Registration() {
   };
 
   return (
-    <div>
-      <h1>Registration page</h1>
-
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <label>
-          Name
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </label>
-        <label>
-          Pochta
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </label>
-        <button type="submit">Registration</button>
-      </form>
-    </div>
+    <section className={styled.section}>
+      <div className={styled.container}>
+        <div className={styled.user}>
+          <div className={styled.imgBx}>
+            <img src={nature} alt="nature" />
+            <div className={styled.formBx}>
+              <form onSubmit={handleSubmit} autoComplete="off">
+                <h2>Create an account</h2>
+                <label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={name}
+                    onChange={handleChange}
+                    placeholder="Username"
+                  />
+                </label>
+                <label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={handleChange}
+                    placeholder="Email Address"
+                  />
+                </label>
+                <label>
+                  <input
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={handleChange}
+                    placeholder="Create Password"
+                  />
+                </label>
+                <button type="submit">Sign Up</button>
+                <p className={styled.signup}>
+                  Alredy have an account? <a href="#">Sign in.</a>
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
+
+//  <div>
+//    <form onSubmit={handleSubmit} autoComplete="off">
+//      <label>
+//        Name
+//        <input type="text" name="name" value={name} onChange={handleChange} />
+//      </label>
+//      <label>
+//        Pochta
+//        <input
+//          type="email"
+//          name="email"
+//          value={email}
+//          onChange={handleChange}
+//        />
+//      </label>
+//      <label>
+//        Password
+//        <input
+//          type="password"
+//          name="password"
+//          value={password}
+//          onChange={handleChange}
+//        />
+//      </label>
+//      <button type="submit">Registration</button>
+//    </form>
+//  </div>;
