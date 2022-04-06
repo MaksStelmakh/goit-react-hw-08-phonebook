@@ -13,9 +13,7 @@ function getTotalContactCount(state) {
 
 const getVisibleContacts = createSelector(
   [getAllContacts, getFilter],
-  (contacts, filter) => {
-    console.log(contacts);
-    console.log(filter);
+  (contacts) => {
     return contacts;
   }
 );

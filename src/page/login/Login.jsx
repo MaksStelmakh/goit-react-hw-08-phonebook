@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { authOperations } from "../../redux/auth";
 import city from "../../images/city.jpeg";
 import styled from "./Login.module.css";
+import { NavLink } from "react-router-dom";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -57,7 +58,8 @@ export default function Login() {
               </label>
               <button type="submit">Login</button>
               <p className={styled.signup}>
-                Don`t have an account? <a href="#">Sign up.</a>
+                Don`t have an account?{" "}
+                <NavLink to="/registration">Sign Up.</NavLink>
               </p>
             </form>
           </div>

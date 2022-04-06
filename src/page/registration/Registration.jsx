@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { authOperations } from "../../redux/auth";
 import styled from "./Registration.module.css";
 import nature from "../../images/nature.jpg";
+import { NavLink } from "react-router-dom";
 
 export default function Registration() {
   const dispatch = useDispatch();
@@ -69,7 +70,8 @@ export default function Registration() {
                 </label>
                 <button type="submit">Sign Up</button>
                 <p className={styled.signup}>
-                  Alredy have an account? <a href="#">Sign in.</a>
+                  Alredy have an account?{" "}
+                  <NavLink to="/login">Sign In.</NavLink>
                 </p>
               </form>
             </div>
