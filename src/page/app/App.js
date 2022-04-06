@@ -11,9 +11,16 @@ import Phonebook from "../phonebook/Phonebook";
 import authOperations from "../../redux/auth/auth-operations";
 
 export default function App() {
-  const refreshUser = useSelector(authSelectors.refreshUser);
+  const dispatch = useDispatch();
+  // const refreshUser = useSelector(authSelectors.refreshUser);
   const logedIn = useSelector(authSelectors.getIsLoggedIn);
-  console.log(logedIn);
+
+  useEffect(() => {
+    if (!logedIn) {
+      return;
+    }
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
 
   return (
     <Routes>

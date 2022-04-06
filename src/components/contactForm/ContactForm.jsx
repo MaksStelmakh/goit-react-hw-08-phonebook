@@ -59,7 +59,9 @@ export default function ContactForm({ onSubmit }) {
           required
         />
       </label>
-      <button type="submit">Add contact</button>
+      <button type="submit">
+        Add contact
+      </button>
     </Form>
   );
 }

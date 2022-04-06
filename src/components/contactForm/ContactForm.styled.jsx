@@ -16,7 +16,8 @@ export const Form = styled.form`
     align-items: center;
   }
   input {
-    background-color: #f5f4fa;
+    background-color: #cad2d7;
+
     width: 240px;
     padding: 15px;
     margin-left: 15px;
@@ -25,7 +26,7 @@ export const Form = styled.form`
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
       color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     &:hover {
-      background-color: #aaaaaa;
+      background-color: #969da2;
     }
   }
   button {
@@ -34,7 +35,7 @@ export const Form = styled.form`
     line-height: 1.62;
     text-align: center;
     width: 120px;
-    background: #f5f4fa;
+    background: #a3b2bf;
     border: none;
     border-radius: 4px;
     padding: 4px 10px;
@@ -49,7 +50,7 @@ export const Form = styled.form`
       3 0px 24px 2px rgba(0, 0, 0, 0.1), 4 0px 34px 30px rgba(0, 0, 0, 0.1);
     &:hover {
       color: #191970;
-      background-color: #aaaaaa;
+      background-color: #9bd2ff;
       box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1),
         0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
       border-radius: 4px;

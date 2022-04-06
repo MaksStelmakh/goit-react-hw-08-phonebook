@@ -13,5 +13,8 @@ export const Label = styled.label`
   input {
     padding: 20px;
     width: 600px;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 `;

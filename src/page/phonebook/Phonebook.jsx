@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ContactForm from "../../components/contactForm/ContactForm";
 import Filter from "../../components/filter/Filter";
 import Contacts from "../../components/contacts/Contacts";
-import { MainSection } from "./Phonebook.styled";
+import { MainSection, Background, ExitBtn } from "./Phonebook.styled";
 import { authOperations, authSelectors } from "../../redux/auth";
 import contactsOperations from "../../redux/phonebook/phonebook-operations";
 import contactsSelectors from "../../redux/phonebook/phonebook-selectors";
@@ -49,15 +49,20 @@ export default function Phonebook() {
   };
 
   return (
-    <>
-      {logedIn && <h2>Добро пожаловать, {name}</h2>}
-      <button type="button" onClick={() => dispatch(authOperations.logOut())}>
-        Exit
-      </button>
+    <Background>
+      <div>
+        {logedIn && <h2>Добро пожаловать, {name}</h2>}
+        <ExitBtn
+          type="button"
+          onClick={() => dispatch(authOperations.logOut())}
+        >
+          Exit
+        </ExitBtn>
+      </div>
       <MainSection>
         <ContactForm onSubmit={addNewContact} />
         <div>
-          <h2>Contacts</h2>
+          <h3>Contacts</h3>
           <Filter value={filter} change={searchMethod} />
           {contacts.length > 0 ? (
             <Contacts
@@ -69,6 +74,6 @@ export default function Phonebook() {
           )}
         </div>
       </MainSection>
-    </>
+    </Background>
   );
 }
