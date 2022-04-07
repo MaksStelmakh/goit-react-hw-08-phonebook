@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ContactForm from "../../components/contactForm/ContactForm";
 import Filter from "../../components/filter/Filter";
 import Contacts from "../../components/contacts/Contacts";
-import { MainSection, Background, ExitBtn } from "./Phonebook.styled";
+import { MainSection, Background, ExitBtn, Title } from "./Phonebook.styled";
 import { authOperations, authSelectors } from "../../redux/auth";
 import contactsOperations from "../../redux/phonebook/phonebook-operations";
 import contactsSelectors from "../../redux/phonebook/phonebook-selectors";
@@ -12,14 +12,15 @@ import { changeFilter } from "../../redux/phonebook/phonebook-actions";
 export default function Phonebook() {
   const dispatch = useDispatch();
   const logedIn = useSelector(authSelectors.getIsLoggedIn);
+  console.log(logedIn);
   const name = useSelector(authSelectors.getUsername);
   const contacts = useSelector(contactsSelectors.getVisibleContacts);
   const filter = useSelector(contactsSelectors.getFilter);
   const deleting = (id) => dispatch(contactsOperations.deleteContacts(id));
+
   useEffect(() => {
     dispatch(contactsOperations.fetchContacts());
-    dispatch(authOperations.fetchCurrentUser());
-  }, []);
+  }, [dispatch]);
 
   const addNewContact = (name, number) => {
     if (
@@ -50,7 +51,7 @@ export default function Phonebook() {
 
   return (
     <Background>
-      <div>
+      <Title>
         {logedIn && <h2>Добро пожаловать, {name}</h2>}
         <ExitBtn
           type="button"
@@ -58,7 +59,7 @@ export default function Phonebook() {
         >
           Exit
         </ExitBtn>
-      </div>
+      </Title>
       <MainSection>
         <ContactForm onSubmit={addNewContact} />
         <div>

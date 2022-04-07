@@ -12,9 +12,9 @@ import authOperations from "../../redux/auth/auth-operations";
 
 export default function App() {
   const dispatch = useDispatch();
-  // const refreshUser = useSelector(authSelectors.refreshUser);
+  const refreshUser = useSelector(authSelectors.refreshUser);
   const logedIn = useSelector(authSelectors.getIsLoggedIn);
-
+  console.log(refreshUser);
   useEffect(() => {
     if (!logedIn) {
       return;
@@ -41,16 +41,16 @@ export default function App() {
             </PublickRoute>
           }
         />
-        (
-        <Route
-          path="/phonebook"
-          element={
-            <PrivateRoute>
-              <Phonebook />
-            </PrivateRoute>
-          }
-        />
-        )
+        {!refreshUser && (
+          <Route
+            path="/phonebook"
+            element={
+              <PrivateRoute>
+                <Phonebook />
+              </PrivateRoute>
+            }
+          />
+        )}
       </Route>
     </Routes>
   );

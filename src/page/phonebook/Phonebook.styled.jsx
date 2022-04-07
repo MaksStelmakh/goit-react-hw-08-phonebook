@@ -19,10 +19,10 @@ export const Background = styled.div`
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
+`;
 
-  div:nth-child(1) {
-    display: flex;
-  }
+export const Title = styled.div`
+  display: flex;
 `;
 
 export const ExitBtn = styled.button`
