@@ -12,13 +12,13 @@ import { changeFilter } from "../../redux/phonebook/phonebook-actions";
 export default function Phonebook() {
   const dispatch = useDispatch();
   const logedIn = useSelector(authSelectors.getIsLoggedIn);
-  console.log(logedIn);
   const name = useSelector(authSelectors.getUsername);
   const contacts = useSelector(contactsSelectors.getVisibleContacts);
   const filter = useSelector(contactsSelectors.getFilter);
   const deleting = (id) => dispatch(contactsOperations.deleteContacts(id));
 
   useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
     dispatch(contactsOperations.fetchContacts());
   }, [dispatch]);
 
