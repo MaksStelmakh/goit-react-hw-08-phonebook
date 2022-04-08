@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import ContactForm from "../../components/contactForm/ContactForm";
 import Filter from "../../components/filter/Filter";
 import Contacts from "../../components/contacts/Contacts";
@@ -28,13 +29,14 @@ export default function Phonebook() {
         (contact) => contact.name.toLowerCase() === name.toLowerCase()
       )
     ) {
-      alert(`${name} is already in contacts.`);
+      toast.warn(`${name} is already in contacts.`);
     } else {
       const contact = {
         name,
         number,
       };
       dispatch(contactsOperations.addContacts(contact));
+      toast.success(`Contact ${name} successfully added.`);
     }
   };
 

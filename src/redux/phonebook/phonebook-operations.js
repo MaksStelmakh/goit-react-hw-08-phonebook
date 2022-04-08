@@ -10,6 +10,7 @@ import {
   fetchContactsSuccess,
   fetchContactsError,
 } from "./phonebook-actions";
+import { toast } from "react-toastify";
 
 const fetchContacts = () => async (dispatch) => {
   dispatch(fetchContactsRequest());
@@ -41,6 +42,7 @@ const deleteContacts = (contactId) => (dispatch) => {
   axios
     .delete(`/contacts/${contactId}`)
     .then(() => dispatch(deleteContactsSuccess(contactId)))
+    .then(() => toast.success(`Contact successfully deleted.`))
     .catch((error) => dispatch(deleteContactsError(error.message)));
 };
 
